@@ -1,13 +1,12 @@
-FROM node:16-alpine
+FROM node:14.14.0-alpine
 
-USER node
- 
-RUN mkdir -p /home/node/app
-WORKDIR /home/node/app
- 
-COPY --chown=node:node ./package.json ./
+
+WORKDIR /react-docker-example/
+
+COPY public/ /react-docker-example/public
+COPY src/ /react-docker-example/src
+COPY package.json /react-docker-example/
+
 RUN npm install
-COPY --chown=node:node ./ ./
 
-
-CMD ["npm", "run", "start"]
+CMD ["npm", "run","start"]

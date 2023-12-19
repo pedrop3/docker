@@ -1,11 +1,14 @@
-version: '3'
+version: "3"
+
 services:
-  web:
+  react-docker-example:
     build:
       context: .
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
-      - /home/node/app/node_modules
-      - ./client:/home/node/app
+      - ./public:/react-docker-example/public
+      - ./src:/react-docker-example/src
+    working_dir: /react-docker-example
+    command: ["npm", "run","start"]
