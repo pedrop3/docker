@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class Fib extends Component {
   state = {
@@ -14,24 +13,40 @@ class Fib extends Component {
   }
 
   async fetchValues() {
-    const values = await axios.get('/api/values/current');
-    this.setState({ values: values.data });
+    try {
+      const response = await fetch('/api/values/current');
+      const values = await response.json();
+      this.setState({ values });
+    } catch (error) {
+      console.error('Error fetching current values:', error);
+    }
   }
 
   async fetchIndexes() {
-    const seenIndexes = await axios.get('/api/values/all');
-    this.setState({
-      seenIndexes: seenIndexes.data,
-    });
+    try {
+      const response = await fetch('/api/values/all');
+      const seenIndexes = await response.json();
+      this.setState({ seenIndexes });
+    } catch (error) {
+      console.error('Error fetching all indexes:', error);
+    }
   }
 
   handleSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post('/api/values', {
-      index: this.state.index,
-    });
-    this.setState({ index: '' });
+    try {
+      await fetch('/api/values', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ index: this.state.index }),
+      });
+      this.setState({ index: '' });
+    } catch (error) {
+      console.error('Error submitting index:', error);
+    }
   };
 
   renderSeenIndexes() {
