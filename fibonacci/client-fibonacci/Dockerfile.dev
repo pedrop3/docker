@@ -1,0 +1,10 @@
+FROM node:18-alpine as node
+
+COPY package.json /usr/
+WORKDIR /usr
+RUN npm install
+
+COPY ./ /usr
+RUN npm run build
+
+
