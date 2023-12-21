@@ -83,3 +83,55 @@ kubectl delete -f <config-file>
 Substitua `<config-file>` pelo nome do seu arquivo de configuração YAML. Isso removerá os recursos especificados no arquivo do cluster Kubernetes.
 
 Certifique-se de personalizar os comandos conforme necessário para atender às suas necessidades específicas. Esses comandos fornecem uma introdução básica ao uso do Kubernetes e são úteis para interagir com o seu cluster local.
+
+
+
+## 9. Criar um segredo genérico 
+
+Claro, aqui está um exemplo de README.md para o comando `kubectl create secret generic`:
+
+# README para kubectl create secret generic
+
+Este repositório fornece instruções sobre como usar o comando `kubectl create secret generic` para criar um segredo no Kubernetes. O comando é utilizado para criar um segredo genérico e é particularmente útil quando se deseja adicionar chaves e valores diretamente da linha de comando.
+
+## Comando
+
+```bash
+kubectl create secret generic <secret_name> --from-literal key=value
+```
+
+Substitua `<secret_name>` pelo nome desejado para o segredo. Isso criará um segredo no Kubernetes com uma chave (`key`) e um valor (`value`) associados.
+
+## Como usar
+
+1. **Clone o Repositório:**
+
+   ```bash
+   git clone https://github.com/seu_usuario/seu_repositorio.git
+   cd seu_repositorio
+   ```
+
+2. **Execute o Comando:**
+
+   Substitua `<secret_name>` pelo nome desejado para o segredo e execute o comando abaixo:
+
+   ```bash
+   kubectl create secret generic <secret_name> --from-literal key=value
+   ```
+
+3. **Verifique o Segredo Criado:**
+
+   Use o seguinte comando para verificar se o segredo foi criado com sucesso:
+
+   ```bash
+   kubectl get secrets
+   ```
+
+   Isso listará todos os segredos no namespace atual.
+
+## Observações
+
+- Certifique-se de estar autenticado no cluster Kubernetes antes de executar o comando.
+- Personalize o nome do segredo e os valores de chave e valor conforme necessário.
+
+Este README oferece uma breve visão geral de como utilizar o comando `kubectl create secret generic` para criar segredos no Kubernetes. Personalize conforme as necessidades específicas do seu projeto.
